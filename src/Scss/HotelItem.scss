@@ -1,0 +1,36 @@
+.hotel {
+  &-image {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 24px;
+    overflow: hidden;
+    width: 100%;
+    // max-width: 350px;
+    height: 238px;
+  }
+  &-details {
+    display: grid;
+    gap: 10px;
+    grid-template-columns: auto auto 1fr;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 1.3rem;
+  }
+  &-superhost {
+    font-family: Montserrat;
+    font-size: 10px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 12px;
+    letter-spacing: 0em;
+    text-align: left;
+    color: #4f4f4f;
+    border: 1px solid #4f4f4f;
+    border-radius: 12px;
+    padding: 0.6rem 0.8rem;
+  }
+  &-rating {
+    justify-self: flex-end;
+  }
+}

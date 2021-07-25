@@ -1,0 +1,44 @@
+.layout-header {
+  display: grid;
+  .header-input-container {
+    * {
+      font-size: 1.4rem;
+      cursor: pointer;
+    }
+    display: grid;
+    grid-auto-flow: column;
+    align-items: center;
+    justify-content: space-between;
+    height: 55px;
+    min-width: 297px;
+    gap: 1.6rem;
+    border-radius: 1.6rem;
+    justify-self: center;
+    margin-top: 4rem;
+    padding: 0rem 1.6rem;
+    box-shadow: 0px 1px 6px 0px rgba(0, 0, 0, 0.1);
+    .input-location {
+      color: #333333;
+    }
+    .input-guests {
+      display: flex;
+      align-items: center;
+      color: #bdbdbd;
+      border-left: solid 1px #f2f2f2;
+      border-right: solid 1px #f2f2f2;
+      padding: 0 1.6rem;
+      height: 100%;
+    }
+    .input-icon {
+      color: rgba(235, 87, 87, 0.9);
+      font-size: 2.5rem;
+    }
+  }
+  @media (min-width: 50em) {
+    grid-template-columns: auto auto;
+    justify-content: space-between;
+    .header-input-container {
+      margin-top: unset;
+    }
+  }
+}
