@@ -28,8 +28,11 @@ const HotelItem = ({
       </div>
       <div className='hotel-details'>
         {superHost && <div className='hotel-superhost'>SUPER HOST</div>}
-        <p>{type}</p>
-        <div className='hotel-rating'>{rating}</div>
+        <p className='hotel-type'>{type}</p>
+        <div className='hotel-rating'>
+          <span className='material-icons hotel-rating-star'>star</span>
+          <p className='hotel-rating-number'>{rating}</p>
+        </div>
       </div>
       <p className='hotel-title'>{title}</p>
     </div>

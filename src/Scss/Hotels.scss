@@ -22,4 +22,16 @@
     letter-spacing: 0em;
     text-align: left;
   }
+  &-items {
+    display: grid;
+    align-items: center;
+    justify-items: center;
+    justify-content: space-between;
+    gap: 32px 32px;
+  }
+  @media (min-width: 70em) {
+    &-items {
+      grid-template-columns: repeat(auto-fit, minmax(250px, auto));
+    }
+  }
 }
