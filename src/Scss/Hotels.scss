@@ -27,11 +27,12 @@
     align-items: center;
     justify-items: center;
     justify-content: space-between;
+    grid-template-columns: 1fr;
     gap: 32px 32px;
   }
-  @media (min-width: 70em) {
+  @media (min-width: 50em) {
     &-items {
-      grid-template-columns: repeat(auto-fit, minmax(250px, auto));
+      grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
     }
   }
 }

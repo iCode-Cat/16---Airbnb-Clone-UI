@@ -4,6 +4,7 @@ import axios from 'axios';
 const initialState = {
   entries: null,
   dataLoaded: false,
+  popup: true,
 };
 
 export const getHotels = createAsyncThunk('contentful/hotels', async () => {
@@ -26,6 +27,9 @@ export const hotelSlice = createSlice({
     dataLoaded: (state) => {
       state.dataLoaded = true;
     },
+    popupToggle: (state) => {
+      state.popup = !state.popup;
+    },
   },
   extraReducers: (builder) => {
     builder.addCase(getHotels.fulfilled, (state, action) => {
@@ -34,6 +38,6 @@ export const hotelSlice = createSlice({
   },
 });
 
-export const { dataLoaded } = hotelSlice.actions;
+export const { dataLoaded, popupToggle } = hotelSlice.actions;
 
 export default hotelSlice.reducer;

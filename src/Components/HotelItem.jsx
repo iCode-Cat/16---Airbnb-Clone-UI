@@ -23,9 +23,10 @@ const HotelItem = ({
 }) => {
   return (
     <div className='hotel'>
-      <div className='hotel-image'>
-        <img width='100%' src={photo} alt={title} />
-      </div>
+      <div
+        style={{ backgroundImage: `url(${photo})` }}
+        className='hotel-image'
+      ></div>
       <div className='hotel-details'>
         {superHost && <div className='hotel-superhost'>SUPER HOST</div>}
         <p className='hotel-type'>{type}</p>
