@@ -1,26 +1,6 @@
 import React from 'react';
 import '../Scss/HotelItem.scss';
-// city(pin): "Oulu"
-// country(pin): "Finland"
-// superHost(pin): true
-// title(pin): "Cozy woodhouse flat with wooden sauna"
-// rating(pin): 5
-// maxGuestsNum(pin): 4
-// type(pin): "Entire house"
-// beds(pin): "null"
-// photo(pin): "https://images.unsplash.com/photo-1522156373667-4c7234bbd804?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjF9&auto=format&fit=crop&w=930&q=80"
-
-const HotelItem = ({
-  city,
-  country,
-  superHost,
-  title,
-  rating,
-  maxGuestsNum,
-  type,
-  beds,
-  photo,
-}) => {
+const HotelItem = ({ superHost, title, rating, type, photo }) => {
   return (
     <div className='hotel'>
       <div

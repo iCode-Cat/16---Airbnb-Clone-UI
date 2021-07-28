@@ -4,12 +4,11 @@ import axios from 'axios';
 const initialState = {
   entries: null,
   dataLoaded: false,
-  popup: true,
-<<<<<<< HEAD
-=======
+  popup: false,
   tabName: 'location',
   selectedLocation: '',
->>>>>>> d4b95fa8b8e6331fdd4c95168d5e52561557c9df
+  guests: 0,
+  guestsReal: 0,
 };
 
 export const getHotels = createAsyncThunk('contentful/hotels', async () => {
@@ -35,15 +34,24 @@ export const hotelSlice = createSlice({
     popupToggle: (state) => {
       state.popup = !state.popup;
     },
-<<<<<<< HEAD
-=======
     setTabName: (state, action) => {
       state.tabName = action.payload;
     },
     setLocation: (state, action) => {
       state.selectedLocation = action.payload;
     },
->>>>>>> d4b95fa8b8e6331fdd4c95168d5e52561557c9df
+    increment: (state) => {
+      state.guests += 1;
+    },
+    decrement: (state) => {
+      state.guests += -1;
+      if (state.guests < 0) {
+        state.guests = 0;
+      }
+    },
+    guestRealAmount: (state, action) => {
+      state.guestsReal = action.payload;
+    },
   },
   extraReducers: (builder) => {
     builder.addCase(getHotels.fulfilled, (state, action) => {
@@ -52,11 +60,14 @@ export const hotelSlice = createSlice({
   },
 });
 
-<<<<<<< HEAD
-export const { dataLoaded, popupToggle } = hotelSlice.actions;
-=======
-export const { dataLoaded, popupToggle, setTabName, setLocation } =
-  hotelSlice.actions;
->>>>>>> d4b95fa8b8e6331fdd4c95168d5e52561557c9df
+export const {
+  guestRealAmount,
+  dataLoaded,
+  popupToggle,
+  setTabName,
+  setLocation,
+  increment,
+  decrement,
+} = hotelSlice.actions;
 
 export default hotelSlice.reducer;

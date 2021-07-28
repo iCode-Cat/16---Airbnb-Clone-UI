@@ -1,47 +1,38 @@
-<<<<<<< HEAD
-import React from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { popupToggle } from '../Redux/HotelSlice';
-import '../Scss/SearchBar.scss';
-
-export const SearchBar = () => {
-  const dispatch = useDispatch();
-  const hotels = useSelector((state) => state.hotels.entries);
-  return (
-    <div className='search'>
-=======
+// eslint-disable-next-line
 import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { popupToggle, setTabName, setLocation } from '../Redux/HotelSlice';
+import {
+  popupToggle,
+  setTabName,
+  setLocation,
+  decrement,
+  increment,
+  guestRealAmount,
+} from '../Redux/HotelSlice';
 import '../Scss/SearchBar.scss';
 
 export const SearchBar = ({ popup }) => {
   const [locations, setLocations] = useState([]);
   const [sort, setSort] = useState({
-    location: null,
+    location: '',
     guests: null,
   });
   const dispatch = useDispatch();
-  const hotels = useSelector((state) => state.hotels.entries);
-  const tabName = useSelector((state) => state.hotels.tabName);
-  const location = useSelector((state) => state.hotels.selectedLocation);
-
-  console.log(sort);
+  const state = useSelector((state) => state.hotels);
 
   useEffect(() => {
-    if (hotels) {
+    if (state.entries) {
       const uniqueArr = [
         ...new Map(
-          hotels.map((data) => [data.fields.city, data.fields])
+          state.entries.map((data) => [data.fields.city, data.fields])
         ).values(),
       ];
       setLocations(uniqueArr);
     }
-  }, [hotels]);
+  }, [state]);
 
   return (
     <div style={{ display: `${popup ? 'block' : 'none'}` }} className='search'>
->>>>>>> d4b95fa8b8e6331fdd4c95168d5e52561557c9df
       <div className='search-wrapper'>
         <p className='search-text'>Edit your search</p>
         <span
@@ -51,41 +42,32 @@ export const SearchBar = ({ popup }) => {
           close
         </span>
         <div className='search-tabs'>
-<<<<<<< HEAD
-          <div className='search-tab'>
-            <p className='search-tab-text'>location</p>
-            <p className='search-tab-textLight'>Helsinki, Finland</p>
-          </div>
-          <div className='search-tab search-tab-line'>
-=======
           <div
             className='search-tab'
             onClick={() => dispatch(setTabName('location'))}
           >
             <p className='search-tab-text'>location</p>
-            <p className='search-tab-textLight'>{sort.location}</p>
+            <p className='search-tab-textLight'>
+              {!sort.location ? 'Choose location' : sort.location}
+            </p>
           </div>
           <div
             className='search-tab search-tab-line'
             onClick={() => dispatch(setTabName('guest'))}
           >
->>>>>>> d4b95fa8b8e6331fdd4c95168d5e52561557c9df
             <p className='search-tab-text'>Guests</p>
-            <p className='search-tab-textLight'>Add guests</p>
+            <p className='search-tab-textLight'>
+              {state.guests === 0 ? 'Add guests' : state.guests}
+            </p>
           </div>
         </div>
         <div className='search-locations'>
-<<<<<<< HEAD
-          {hotels &&
-            hotels.map((hotel) => (
-              <p>{hotel.fields.city + ',' + hotel.fields.country}</p>
-            ))}
-        </div>
-=======
-          {hotels && tabName === 'location' ? (
+          {state.entries && state.tabName === 'location' ? (
             locations.map((hotel) => (
               <div
-                onClick={() => setSort({ ...sort, location: hotel.city })}
+                onClick={() => {
+                  setSort({ ...sort, location: hotel.city });
+                }}
                 className='search-item'
                 key={hotel.id}
               >
@@ -96,7 +78,25 @@ export const SearchBar = ({ popup }) => {
               </div>
             ))
           ) : (
-            <div>HELLO</div>
+            <div className='search-guest'>
+              <p className='search-guest-type'>Adults</p>
+              <p className='search-guest-desc'>Ages 13 or above</p>
+              <div className='search-guest-counter'>
+                <span
+                  className='material-icons'
+                  onClick={() => dispatch(increment())}
+                >
+                  add_box
+                </span>
+                <div className='search-guest-num'>{state.guests}</div>
+                <span
+                  className='material-icons'
+                  onClick={() => dispatch(decrement())}
+                >
+                  indeterminate_check_box
+                </span>
+              </div>
+            </div>
           )}
         </div>
         <button
@@ -104,11 +104,11 @@ export const SearchBar = ({ popup }) => {
           onClick={() => {
             dispatch(popupToggle());
             dispatch(setLocation(sort.location));
+            dispatch(guestRealAmount(state.guests));
           }}
         >
           Search
         </button>
->>>>>>> d4b95fa8b8e6331fdd4c95168d5e52561557c9df
       </div>
     </div>
   );
