@@ -5,6 +5,11 @@ const initialState = {
   entries: null,
   dataLoaded: false,
   popup: true,
+<<<<<<< HEAD
+=======
+  tabName: 'location',
+  selectedLocation: '',
+>>>>>>> d4b95fa8b8e6331fdd4c95168d5e52561557c9df
 };
 
 export const getHotels = createAsyncThunk('contentful/hotels', async () => {
@@ -30,6 +35,15 @@ export const hotelSlice = createSlice({
     popupToggle: (state) => {
       state.popup = !state.popup;
     },
+<<<<<<< HEAD
+=======
+    setTabName: (state, action) => {
+      state.tabName = action.payload;
+    },
+    setLocation: (state, action) => {
+      state.selectedLocation = action.payload;
+    },
+>>>>>>> d4b95fa8b8e6331fdd4c95168d5e52561557c9df
   },
   extraReducers: (builder) => {
     builder.addCase(getHotels.fulfilled, (state, action) => {
@@ -38,6 +52,11 @@ export const hotelSlice = createSlice({
   },
 });
 
+<<<<<<< HEAD
 export const { dataLoaded, popupToggle } = hotelSlice.actions;
+=======
+export const { dataLoaded, popupToggle, setTabName, setLocation } =
+  hotelSlice.actions;
+>>>>>>> d4b95fa8b8e6331fdd4c95168d5e52561557c9df
 
 export default hotelSlice.reducer;

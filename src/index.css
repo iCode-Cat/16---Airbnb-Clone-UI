@@ -25,6 +25,14 @@ body {
   font-size: 1.6rem;
 }
 
+<<<<<<< HEAD
+=======
+button {
+  border: none;
+  outline: none;
+}
+
+>>>>>>> d4b95fa8b8e6331fdd4c95168d5e52561557c9df
 footer {
   display: flex;
   align-items: flex-end;
